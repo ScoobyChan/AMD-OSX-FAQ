@@ -1,0 +1,89 @@
+**Q**: Can I install macOS with my NVIDIA graphics card?
+**A**: 
+Short answer: Maybe, but not the latest version.
+Long answer:
+ - Ampere and Turing (GTX 16, RTX 20, 30 series) are not supported and never will be
+ - Maxwell and Pascal (GTX 9, 10 series) are supported in macOS Sierra and High Sierra, but AMD users must use High Sierra
+ - Kepler (*Most* GTX 7 series) is supported up to macOS Big Sur
+ - Reference the [GPU Buyer's Guide](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html) for information on other cards or are unsure if you have a supported GTX 7 series card
+ 
+**Q**: How do I fix the 🚫 sign followed by a bunch of AppleUSBHostController errors?
+**A**:
+This is a USB issue on FX CPUs.
+Install [XLNCUSBFix.kext](https://cdn.discordapp.com/attachments/566705665616117760/566728101292408877/XLNCUSBFix.kext.zip).
+
+**Q**: Will macOS work with my AMD laptop?
+**A**:
+No. The GPUs aren't compatible with macOS. Also, many people who have attempted it report ACPI issues, unsupported SATA controllers, etc. And to make it worse, the lack of power management means your battery life will be awful.
+
+**Q**: Why is my NVIDIA GPU performance worse than Windows and Linux?
+**A**:
+This is a known issue that has to do with both poor drivers to begin with, and the fact that the AMD OS X patches slightly reduce GPU performance.
+
+**Q**: Is there any way of running VMs on a macOS host?
+**A**:
+Yes, you will either need to use VirtualBox, VMware 10 or older, or Parallels 13.1.0 or older.
+For the second two, anything newer than that uses AppleHV which is not supported on AMD CPUs.
+QEMU also works but KVM acceleration and PCI passthrough do not so the other options are a better choice.
+
+**Q**: Can I install macOS on the same disk as Windows and/or Linux?
+**A**:
+Yes. It is best to install Windows first and then macOS as doing it reverse of that sometimes causes the Windows installer to bug out, forcing you to install Windows from the command prompt. However, you may have to expand your Windows EFI partition.
+
+**Q**: Why does my sound not work?
+**A**:
+ - Zen users should use AppleALC. Follow the [Fixing Audio](https://dortania.github.io/OpenCore-Post-Install/universal/update.html) guide for information on how to configure it. It will not work out of the box.
+ - If no layout IDs work for you, try VoodooHDA. It does not work if injected from OpenCore on macOS 11.3 or later.
+ - Bulldozer and Jaguar users should use VoodooHDA. This will work out of the box without any configuration but has slightly worse sound quality. It does not work if injected from OpenCore on macOS 11.3 or later.
+ 
+**Q**: Why does my PCIe/M.2 Wi-Fi not work?
+**A**:
+ - Broadcom/Fenvi users should have Wi-Fi working out of the box without any kexts. If this isn't the case, either your card isn't actually supported, or there is a faulty connection somewhere. Check [here](https://dortania.github.io/Wireless-Buyers-Guide/) to check if your card is supported.
+ - Intel Wi-Fi users should use [itlwm](https://github.com/OpenIntelWireless/itlwm). If you need Wi-Fi in the macOS Installer, use AirportItlwm and set `Misc -> Security -> SecureBootModel` to `Default`. If you want to use Continuity features such as Handoff and Universal Clipboard, follow the same steps as for the macOS installer. If you value stability and speed, use itlwm. This, however, will require you to run the HeliPort app every time you boot macOS.
+ - Users of Atheros or any other vendor not listed here should reference the [Wireless Buyer's Guide](https://dortania.github.io/Wireless-Buyers-Guide/) to check for support for their card.
+ 
+**Q**: Why does my USB Wi-Fi not work?
+**A**:
+First, check the manufacturer's website for macOS drivers.
+If there are none, check [here](https://github.com/chris1111/Wireless-USB-Adapter) for Catalina and older or [here](https://github.com/chris1111/Wireless-USB-Big-Sur-Adapter) for Big Sur or newer to see if there is support for your dongle.
+If not, you're out of luck.
+
+**Q**: Can I use iMessage, Siri, FaceTime, iCloud, etc.?
+**A**:
+ - If you are installing macOS using the Dortania guide, yes. Check [here](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html) for troubleshooting steps.
+ - If you are installing macOS in a VM that does not use OpenCore as its bootloader, no.
+ - If you are installing macOS using a custom kernel, no.
+
+**Q**: Where can I find drivers for my NVIDIA GPU?
+**A**:
+Firstly, [check if your NVIDIA GPU is supported](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html).
+If it is natively supported, it will work without manually installing drivers.
+If it needs the NVIDIA Web Drivers, update to the latest build of High Sierra through the App Store. If you've done this correctly, when you click on "10.13.6" in `About This Mac`, it will say 17G14042 in parentheses. If not, check the App Store for another update. Once this is completed or you cannot update further, go to #bot_commands and run `$nvweb [your build number]`.
+
+**Q**: Why does my AMD GPU not work?
+**A**:
+The majority of supported AMD GPUs work out of the box. If your AMD GPU is not working, check [here](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/amd-gpu.html) for anything special you may need to do to get your card working.
+
+**Q**: How can I disable Gatekeeper?
+**A**:
+Open the Terminal and run the following command: `sudo spctl --master-disable`.
+
+**Q**: Why doesn't this server support Clover?
+**A**:
+This is a summary of [this page](https://dortania.github.io/OpenCore-Install-Guide/why-oc.html) in the Dortania guide.
+ - OpenCore supports all x86(-64) versions of macOS (AMD users are limited to High Sierra and up with the AMD OS X patches, however).
+ - Much less patching is done and OpenCore uses a better method of kext injection which results in better stability.
+ - No need to disable SIP, and OpenCore has full support for Secure Boot, both UEFI and Apple's variant.
+ 
+**Q**: Why doesn't this server support premade EFIs?
+**A**:
+In short, no two systems are truly alike. What works for someone else may not work for you. In addition, a lot of people making EFIs online don't know what they're doing. Finally, although this may not be important to some people, it doesn't teach you anything. This may not be important in the short term, but if you ever need help with your installation, you will not know basic things about how to do things like edit your config, add kexts, etc.
+
+**Q**: Will my AMD iGPU work?
+**A**:
+No. The native Vega drivers currently don't know how to address system memory as video memory, as is done with these iGPUs on Windows and Linux. This can't be worked around easily as it's different from how it's done on Intel iGPUs. There are some who are working on these issues, but I wouldn't count on anything coming from it.
+
+**Q**: How do I fix `This version of Mac OS X is not supported on this platform`?'
+**A**:
+Your SMBIOS information is incorrect. For AMD, `MacPro7,1` is best for Catalina and up. If you want to run High Sierra or Mojave, `iMacPro1,1` is the best choice.
+**Do not use the `-no_compat_check` boot argument.**
