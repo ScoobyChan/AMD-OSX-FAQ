@@ -5,10 +5,10 @@ The [Dortania guide](https://dortania.github.io/Getting-Started) is the best res
 **Q**: Can I install macOS with my NVIDIA graphics card?
 **A**: 
 Maybe, but not the latest version.
- - Ampere and Turing (GTX 16, RTX 20, 30 series) are not supported and never will be
- - Maxwell and Pascal (GTX 745, 750, 750 Ti, GTX 900, 10 series) are supported in macOS Sierra and High Sierra, but AMD users must use High Sierra
- - Kepler (*Some* GTX 600 series, *Most* GTX 700 series) is supported up to macOS Big Sur
- - Reference the [GPU Buyer's Guide](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html) for information on other cards or are unsure if you have a supported GTX 6, 7, or 9 series card
+ - Ampere and Turing (GTX 16, RTX 20, 30 series) are not supported and never will be.
+ - Maxwell and Pascal (GTX 745, 750, 750 Ti, GTX 900, 10 series) are supported in macOS Sierra and High Sierra, but AMD users must use High Sierra.
+ - Kepler (*Some* GTX 600 series, *Most* GTX 700 series) is supported up to macOS Big Sur.
+ - Reference the [GPU Buyer's Guide](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/nvidia-gpu.html) for information on other cards or are unsure if you have a supported GTX 6, 7, or 9 series card.
  
 **Q**: Can I install macOS with my AMD graphics card?
 **A**:
@@ -20,7 +20,7 @@ If it's recent, probably.
  - Navi 10 (RX 5000 series) is supported starting with macOS Catalina.
  - Navi 21 (RX 6800 and better) is supported in macOS Big Sur (11.4) and later.
  - Navi 22 (RX 6700 XT) is not supported.
- - Navi 23 (RX 6600 and 6600 XT) is supported, however the RX 6600 is not.
+ - Navi 23 (RX 6600 and 6600 XT) is supported in macOS Monterey (12.1) and later, however the RX 6600 requires a device ID patch.
  
 **Q**: How do I fix the 🚫 sign followed by a bunch of AppleUSBHostController errors?
 **A**:
@@ -29,7 +29,7 @@ Install [XLNCUSBFix.kext](https://cdn.discordapp.com/attachments/566705665616117
 
 **Q**: Will macOS work with my AMD laptop?
 **A**:
-No. The GPUs aren't compatible with macOS. Also, many people who have attempted it report ACPI issues, unsupported SATA controllers, etc. And to make it worse, the lack of power management means your battery life will be awful.
+No. The GPUs aren't compatible with macOS. Also, many people who have attempted it have reported ACPI issues, unsupported SATA controllers, etc. And to make it worse, the lack of power management means your battery life will be awful.
 
 **Q**: Why is my NVIDIA GPU performance worse than Windows and Linux?
 **A**:
@@ -62,7 +62,7 @@ With Linux, the two OSes can be installed in any order.
 **Q**: Why does my PCIe/M.2 Wi-Fi not work?
 **A**:
  - Broadcom/Fenvi users should have Wi-Fi working out of the box without any kexts. If this isn't the case, either your card isn't actually supported, or there is a faulty connection somewhere. Check [here](https://dortania.github.io/Wireless-Buyers-Guide/) to check if your card is supported.
- - Intel Wi-Fi users should use [itlwm](https://github.com/OpenIntelWireless/itlwm). If you need Wi-Fi in the macOS Installer, use AirportItlwm and set `Misc -> Security -> SecureBootModel` to `Default`. If you want to use Continuity features such as Handoff and Universal Clipboard, follow the same steps as for the macOS installer. If you value stability and speed, use itlwm. This, however, will require you to run the HeliPort app every time you boot macOS.
+ - Intel Wi-Fi users should use [itlwm](https://github.com/OpenIntelWireless/itlwm). If you need Wi-Fi in the macOS Installer, use AirportItlwm and set `Misc -> Security -> SecureBootModel` to `Default`. If you want to use Continuity features such as Handoff and Universal Clipboard, install AirportItlwm as well. If you value stability and speed, use itlwm. This, however, will require you to run the HeliPort app every time you boot macOS.
  - Users of Atheros or any other vendor not listed here should reference the [Wireless Buyer's Guide](https://dortania.github.io/Wireless-Buyers-Guide/) to check for support for their card.
  
 **Q**: Why does my USB Wi-Fi not work?
@@ -75,7 +75,7 @@ If not, you're out of luck.
 **A**:
  - If you are installing macOS using the Dortania guide, yes. Check [here](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html) for troubleshooting steps.
  - If you are installing macOS in a VM that does not use OpenCore as its bootloader, no.
- - If you are installing macOS using a custom kernel, no.
+ - If you are installing macOS using a custom kernel or using a distro, no.
 
 **Q**: Where can I find drivers for my NVIDIA GPU?
 **A**:
@@ -85,7 +85,7 @@ If it needs the NVIDIA Web Drivers, update to the latest build of High Sierra th
 
 **Q**: Why does my AMD GPU not work?
 **A**:
-The majority of supported AMD GPUs work out of the box. If your AMD GPU is not working, check [here](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/amd-gpu.html) for anything special you may need to do to get your card working.
+The majority of supported AMD GPUs work out of the box. If your AMD GPU is not working, check [here](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/amd-gpu.html) for information on anything special you may need to do to get your card working.
 
 **Q**: How can I disable Gatekeeper?
 **A**:
@@ -133,10 +133,9 @@ Add `nvda_drv_vrl=1` to your boot args.
 **A**:
 If the update still has the same name (i.e. Big Sur, Monterey, etc) as your current installation then most likely yes. If it is a new OS release, check the beta release discussion channel for any issues with the new OS version. 
 
-
 **Q**: Are beta versions of macOS supported on AMD?
 **A**:
-If by "supported" you mean bootable, most of the time yes. If by "supported" you mean that support is offered if you have a problem. no. In the case of completely new releases of macOS, new kernel patches must be used. Development of these patches can take time, so always check in the server's beta discussion channel if the version you want to update to is bootable.
+If by "supported" you mean bootable, most of the time yes. If by "supported" you mean that support is offered if you have a problem. no. In the case of completely new releases of macOS, new kernel patches most of the time must be used. Development of these patches can take time, so always check in the server's beta discussion channel if the version you want to update to is bootable.
 
 **Q**: How can I fix sleep?
 **A**:
@@ -153,8 +152,8 @@ You should check the Dortania guide for the most up-to-date information, however
 **Q**: You guys are awesome! Where can I donate?
 **A**:
  - First of all, thank you.
- - Secondly, you can [donate to AMD OS X here](https://forum.amd-osx.com/app.php/donation/index.html) which will go towards improving and most importantly, hosting the forums and knowledge base. If you would like the AMD OS X Donator role, DM @Shaneee#9597 with a screenshot of your PayPal receipt.
- - **Although this is not expected at all, we are just volunteers helping each other**, if you would like to donate to a specific person helping you, just ask. I'm sure it would be well appreciated.
+ - You can [donate to AMD OS X here](https://forum.amd-osx.com/app.php/donation/index.html) which will go towards improving and most importantly, hosting the forums and knowledge base. If you would like the AMD OS X Donator role, DM @Shaneee#9597 with a screenshot of your PayPal receipt.
+ - **Although this is not expected at all, we are just volunteers helping each other**, if you would like to donate to a specific person helping you, just ask. It would be well appreciated.
 
 **Q**: What format and partition scheme should I use?
 **A**:
@@ -176,7 +175,7 @@ This is a USB issue. Try disabling `Kernel -> Quirks -> XhciPortLimit` first. If
 
 **Q**: Why is my microphone not working with AppleALC?
 **A**:
-AppleALC currently has not microphone support on AMD CPUs. You will either need to use an Intel CPU, use VoodooHDA (this does not work on macOS 11.3 and later), or use a USB DAC or microphone.
+AppleALC currently does not have microphone support on AMD CPUs. You will either need to use an Intel CPU, use VoodooHDA (this does not work on macOS 11.3 and later), or use a USB DAC or microphone.
 
 **Q**: Can I install security updates/minor OS updates?
 **A**:
@@ -202,7 +201,7 @@ This indicates a GPU issue and can be caused by a number of things.
  - If you have a GPU disabled, make sure there are no display cables plugged into it.
  - Make sure you have the [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases) kext installed.
 
-**Q**: macOS gets stuck on `[EB|#LOG:EXITBS:START]`, `End RandomSeed`, or somewhere where text containing`"[EB|" is visible. What should I do?
+**Q**: macOS gets stuck on `[EB|#LOG:EXITBS:START]`, `End RandomSeed`, or somewhere where text containing `"[EB|"` is visible. What should I do?
 **A**:
  - Make sure you have the AMD OS X kernel patches. As of the time of writing, `Kernel -> Patch` should report 16 children in ProperTree.
  - Make sure you have edited your CPU core count correctly into the kernel patches.
@@ -210,7 +209,7 @@ This indicates a GPU issue and can be caused by a number of things.
  - Download the latest version of ProperTree and perform and OC Snapshot. This can sometimes fix issues with an outdated `UEFI -> Drivers` section.
  - Remove `AppleMCEReporterDisabler.kext` if you have it.
  - Remove all drivers except HfsPlus and OpenRuntime. OpenCanopy or any others you know for sure are appropriate for your system may also be kept.
- - Update your BIOS. If on a 400 or 500 series chipset, disable `Booter -> Quirks -> SetupVirtualMap`.
+ - Update your BIOS. If on a 400 or 500 series chipset, disable `Booter -> Quirks -> SetupVirtualMap` after doing so.
 
 **Q**: When I boot OpenCore, only my previous OS shows up. What should I do?
 **A**:
