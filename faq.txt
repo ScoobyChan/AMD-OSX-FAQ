@@ -14,7 +14,7 @@ Long answer:
 **Q**: Can I install macOS with my AMD graphics card?
 **A**:
 If it's recent, probably.
- - GCN 1 and 2 (R7/R9) are supported in OS X Yosetmite and later, however many will require a device ID patch and many of these cards just outright do not work despite being supported in theory. Polaris or later is highly recommended over these.
+ - GCN 1 and 2 (R7/R9) are supported in OS X Yosemite and later, however many will require a device ID patch and many of these cards just outright do not work despite being supported in theory. Polaris or later is highly recommended over these.
  - Polaris (RX 400 and 500 series) is supported in OS X Yosemite and later. The RX 550 can be found in both Baffin and Lexa variants. If it is a Lexa variant, it will need a device ID patch.
  - Vega 10 and 20 GPUs are supported starting with macOS Sierra and Mojave, respectively. The Radeon VII is Vega 20.
  - Vega integrated graphics are not supported.
