@@ -21,6 +21,7 @@ If it's recent, probably.
  - Navi 21 (RX 6800 and better) is supported in macOS Big Sur (11.4) and later.
  - Navi 22 (RX 6700 XT) is not supported.
  - Navi 23 (RX 6600 and 6600 XT) is supported in macOS Monterey (12.1) and later, however the RX 6600 requires a device ID patch.
+ - Reference the [GPU Buyer's Guide](https://dortania.github.io/GPU-Buyers-Guide/modern-gpus/amd-gpu.html) for information on other cards.
  
 **Q**: How do I fix the 🚫 sign followed by a bunch of AppleUSBHostController errors?
 **A**:
