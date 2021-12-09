@@ -4,8 +4,7 @@ The [Dortania guide](https://dortania.github.io/Getting-Started) is the best res
 
 **Q**: Can I install macOS with my NVIDIA graphics card?
 **A**: 
-Short answer: Maybe, but not the latest version.
-Long answer:
+Maybe, but not the latest version.
  - Ampere and Turing (GTX 16, RTX 20, 30 series) are not supported and never will be
  - Maxwell and Pascal (GTX 745, 750, 750 Ti, GTX 900, 10 series) are supported in macOS Sierra and High Sierra, but AMD users must use High Sierra
  - Kepler (*Some* GTX 600 series, *Most* GTX 700 series) is supported up to macOS Big Sur
