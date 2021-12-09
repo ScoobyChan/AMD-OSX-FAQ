@@ -56,6 +56,7 @@ With Linux, the two OSes can be installed in any order.
 
 **Q**: Why does my sound not work?
 **A**:
+ - USB sound will work on all systems regardless of having AppleALC or VoodooHDA. If it doesn't, follow the same instructions as for [fixing broken USB ports](this will be a discord link to the USB mapping question once transcribed to the server).
  - Zen users should use AppleALC. Follow the [Fixing Audio](https://dortania.github.io/OpenCore-Post-Install/universal/update.html) guide for information on how to configure it. It will not work out of the box.
  - If no layout IDs work for you, try VoodooHDA. It does not work if injected from OpenCore on macOS 11.3 or later.
  - Bulldozer and Jaguar users should use VoodooHDA. This will work out of the box without any configuration but has slightly worse sound quality. It does not work if injected from OpenCore on macOS 11.3 or later.
