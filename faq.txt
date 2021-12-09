@@ -34,7 +34,7 @@ No. The GPUs aren't compatible with macOS. Also, many people who have attempted 
 
 **Q**: Why is my NVIDIA GPU performance worse than Windows and Linux?
 **A**:
-This is a known issue that has to do with both NVIDIA poor drivers to begin with, and the fact that the AMD OS X patches slightly reduce GPU performance.
+This is a known issue that has to do with both poor NVIDIA drivers to begin with, and the fact that the AMD OS X patches slightly reduce GPU performance.
 
 **Q**: Why is my AMD GPU performance worse than Windows and Linux?
 **A**:
