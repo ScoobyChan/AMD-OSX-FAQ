@@ -45,7 +45,7 @@ Otherwise, set the `Enabled` value of algrey's patch to false, and set the same 
 
 **Q**: Is there any way of running VMs on a macOS host?
 **A**:
-Yes, you will either need to use VirtualBox, VMware 10 or older, or Parallels 13.1.0 or older.
+Yes, you will either need to use VirtualBox, VMware 10 or older, or Parallels 13.1.0 or older. You will of course also need virtualization enabled in your BIOS.
 For the second two, anything newer than that uses AppleHV which is not supported on AMD CPUs.
 QEMU also works but KVM acceleration and PCI passthrough do not, so the other options are a better choice.
 
