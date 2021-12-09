@@ -19,7 +19,7 @@ If it's recent, probably.
  - Vega 10 and 20 GPUs are supported starting with macOS Sierra and Mojave, respectively. The Radeon VII is Vega 20.
  - Vega integrated graphics are not supported.
  - Navi 10 (RX 5000 series) is supported starting with macOS Catalina.
- - Navi 21 (RX 6800 and better) are supported in macOS Big Sur (11.4) and later.
+ - Navi 21 (RX 6800 and better) is supported in macOS Big Sur (11.4) and later.
  - Navi 22 (RX 6700 XT) is not supported.
  - Navi 23 (RX 6600 and 6600 XT) is supported, however the RX 6600 is not.
  
