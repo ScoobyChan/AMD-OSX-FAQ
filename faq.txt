@@ -42,7 +42,7 @@ This is an issue with Algrey's PAT patch (and to a much lesser extent, with Shan
 Look under `Kernel -> Patch` in your config.plist file. Find the two patches called `algrey - _mtrr_update_action fix PAT` and `Shaneee - _mtrr_update_action fix PAT`.
 If you are on the TRx40 platform, delete both of these patches.
 Otherwise, set the `Enabled` value of algrey's patch to false, and set the same key to true on Shaneee's patch.
-Note that shaneee's patch can affect audio quality when using it over HDMI.
+Note that Shaneee's patch can affect HDMI audio quality and does not work on NVIDIA GPUs.
 
 **Q**: Is there any way of running VMs on a macOS host?
 **A**:
@@ -61,7 +61,7 @@ With Linux, the two OSes can be installed in any order.
  - Zen users should use AppleALC. Follow the [Fixing Audio](https://dortania.github.io/OpenCore-Post-Install/universal/update.html) guide for information on how to configure it. It will not work out of the box.
  - If no layout IDs work for you, try VoodooHDA. It does not work if injected from OpenCore on macOS 11.3 or later.
  - Bulldozer and Jaguar users should use VoodooHDA. This will work out of the box without any configuration but has slightly worse sound quality. It does not work if injected from OpenCore on macOS 11.3 or later.
- - AUX Microphones don't work with AppleALC and if you want this to work you will need to use VoodooHDA
+ - AUX microphones don't work with AppleALC, you will need VoodooHDA for these to work.
  
 **Q**: Why does my PCIe/M.2 Wi-Fi not work?
 **A**:
@@ -102,7 +102,7 @@ This is a summary of [this page](https://dortania.github.io/OpenCore-Install-Gui
  - Much less patching is done and OpenCore uses a better method of kext injection which results in better stability.
  - No need to disable SIP, and OpenCore has full support for Secure Boot, both UEFI and Apple's variant.
  - Many users in the server do not know how to troubleshoot issues with Clover as it hasn't been used widespread for over 2 years.
- - If you want to use clover with support then head to this website forum for help https://www.macos86.it/ but alot of people will recommend OpenCore 
+ - If you want support with Clover, then head to this forum for help: https://www.macos86.it/ - a lot of people, however, may still recommend OpenCore.
  
 **Q**: Why doesn't this server support premade EFIs?
 **A**:
@@ -135,19 +135,19 @@ If it crashes with `Illegal Instruction: 4`, then it's because they are 32-bit a
 Set `Misc -> Security -> SecureBootModel` to `Disabled`.
 Add `nvda_drv_vrl=1` to your boot args.
 
-Nvidia Troubleshooting:
-uninstall webdrivers
-reboot
-reset NVram in oc boot menu
-`sudo nvram nvda_drv_vrl=1` in terminal
-reboot
-install webdrivers
-reboot
+NVIDIA Troubleshooting:
+ - Uninstall Web Drivers
+ - Reboot
+ - Reset NVRAM in the OpenCore picker
+ - Run `sudo nvram nvda_drv_vrl=1` in the terminal
+ - Reboot
+ - Install Web Drivers
+ - Reboot
 
-if it doesnt work
-change smbios to imac14,2
-install latest security update
-and repeat same process
+If this fails:
+ - Change your SMBIOS to iMac14,2
+ - Install the latest security update
+ - Repeat the same process
 
 try single screen if you have multiple then add the extras
 
@@ -222,6 +222,7 @@ This indicates a GPU issue and can be caused by a number of things.
  - If you are using a device ID patch, double check that you have done it correctly.
  - If you have a GPU disabled, make sure there are no display cables plugged into it.
  - Make sure you have the [WhateverGreen](https://github.com/acidanthera/whatevergreen/releases) kext installed.
+ - If you are using the NVIDIA Web Drivers, try another video port on your GPU.
 
 **Q**: macOS gets stuck on `[EB|#LOG:EXITBS:START]`, `End RandomSeed`, or somewhere where text containing `"[EB|"` is visible. What should I do?
 **A**:
