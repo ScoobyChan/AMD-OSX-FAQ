@@ -99,6 +99,7 @@ This is a summary of [this page](https://dortania.github.io/OpenCore-Install-Gui
  - OpenCore supports all x86(-64) versions of macOS (AMD users are limited to High Sierra and up with the AMD OS X patches, however).
  - Much less patching is done and OpenCore uses a better method of kext injection which results in better stability.
  - No need to disable SIP, and OpenCore has full support for Secure Boot, both UEFI and Apple's variant.
+ - Many users in the server do not know how to troubleshoot issues with Clover as it hasn't been used widespread for over 2 years.
  
 **Q**: Why doesn't this server support premade EFIs?
 **A**:
@@ -188,7 +189,7 @@ Almost certainly, but if you want to be safe, or if you can't afford downtime, c
 NVIDIA never released Web Drivers for 17G66.
 Update to build 17G14042 through the App Store and run `$nvweb 17G14042` in #bot_commands.
 
-**Q**: macOS gets stuck on the Apple logo when I boot it. What should I do?
+**Q**: macOS gets stuck on the Apple logo when I boot. What should I do?
 **A**:
 Add `-v debug=0x100 keepsyms=1` to your boot args and troubleshoot according to what it gets stuck at after that.
 
@@ -219,6 +220,7 @@ This indicates a GPU issue and can be caused by a number of things.
  - Check that `Misc -> Security -> ScanPolicy` is set to 0.
  - Check that you have the appropriate HFS+ driver installed for your computer. (i.e. HfsPlus.efi for most systems or HfsPlusLegacy.efi for legacy systems)
  - Download the latest version of ProperTree and perform an OC Snapshot. This can sometimes fix issues with an outdated `UEFI -> Drivers` section.
+ - Press space while in the OpenCore picker. If this fixes your issue, you should disable `Misc -> Boot -> HideAuxiliary` as a more permanent solution.
 
 **Q**: How can I transfer my EFI to my macOS drive so I don't have to boot from a USB drive anymore?
 **A**:
