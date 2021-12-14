@@ -234,6 +234,10 @@ This indicates a GPU issue and can be caused by a number of things.
  - Remove all drivers except HfsPlus and OpenRuntime. OpenCanopy or any others you know for sure are appropriate for your system may also be kept.
  - Update your BIOS. If on a 400 or 500 series chipset, disable `Booter -> Quirks -> SetupVirtualMap` after doing so.
 
+**Q**: OpenCore throws the error `OCB: LoadImage failed`. What should I do?
+**A**:
+Follow the same troubleshooting steps as for `[EB|#LOG:EXITBS:START]` above.
+
 **Q**: When I boot OpenCore, only my previous OS shows up. What should I do?
 **A**:
  - Check that you have both `BaseSystem.dmg` and `BaseSystem.chunklist` in a folder called `com.apple.recovery.boot` in the root of your flash drive. If using an offline installer made from macOS, this can be ignored.
